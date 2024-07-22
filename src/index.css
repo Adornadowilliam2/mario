@@ -14,6 +14,9 @@ nav {
   background-color: aqua;
 }
 
+h2 {
+  text-align: center;
+}
 nav img {
   width: 100px;
   margin: 10px;
@@ -81,11 +84,12 @@ main h1 {
 
 @media screen and (max-width: 767px) {
   main {
-    background-size: contain;
+    background-image: url(./media/mario.jpg);
   }
 
   form {
-    width: 200px;
+    width: 100%;
+    margin: 20px;
   }
 
   button {

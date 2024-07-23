@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import logo from "./media/logo.jpg";
+import Confetti from "react-confetti";
 
 function App() {
   const [appear, setAppear] = useState(false);
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
+  const [confetti, setConfetti] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setConfetti(true);
+    setTimeout(() => {
+      setConfetti(false);
+    }, 3000);
     setAppear(true);
   };
 
@@ -25,6 +31,7 @@ function App() {
             <h1>
               Welcome {fname} {lname}
             </h1>
+            {confetti && <Confetti numberOfPieces={200} />}
           </div>
         ) : (
           <form onSubmit={onSubmit}>

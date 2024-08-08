@@ -1,6 +1,10 @@
-// main.js
-const { app, BrowserWindow } = require("electron");
-const path = require("path");
+import { app, BrowserWindow } from "electron";
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Get the directory of the current module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -9,14 +13,15 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
-      enableRemoteModule: false,
       nodeIntegration: false,
     },
   });
 
-  mainWindow.loadURL("http://localhost:3000"); // URL where Vite serves your React app
-  // For production, use:
-  // mainWindow.loadFile(path.join(__dirname, 'dist/index.html'));
+  // For development mode
+  mainWindow.loadURL("http://localhost:5173/mario/");
+
+  // For production mode
+  // mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
 }
 
 app.whenReady().then(() => {
